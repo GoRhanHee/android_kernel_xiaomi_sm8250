@@ -16,9 +16,10 @@ ccflags-y += -I$(objtree)/security/selinux -include $(srctree)/include/uapi/asm-
 
 obj-$(CONFIG_KSU) += kernelsu.o
 
+
 # ksud_overlayfs: changed sparse image journal size to 64MB for good balance of performance and efficiency
-# https://github.com/rifsxd/KernelSU-Next/commit/c20fe6c886d990da3933e28f80a0d08ab55ffa09
-KSU_GIT_VERSION := 2158
+# https://github.com/KernelSU-Next/KernelSU-Next/commit/1d258196b1abdeec0437c0c5f0c748e05ef61300
+KSU_GIT_VERSION := 2290
 
 # ksu_version: major * 10000 + git version + 200 for historical reasons
 $(eval KSU_VERSION=$(shell expr 10000 + $(KSU_GIT_VERSION) + 200))

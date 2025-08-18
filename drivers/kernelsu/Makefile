@@ -18,8 +18,8 @@ obj-$(CONFIG_KSU) += kernelsu.o
 
 
 # ksud_overlayfs: changed sparse image journal size to 64MB for good balance of performance and efficiency
-# https://github.com/KernelSU-Next/KernelSU-Next/commit/1d258196b1abdeec0437c0c5f0c748e05ef61300
-KSU_GIT_VERSION := 2290
+#  1.0.9v 
+KSU_GIT_VERSION := 2597
 
 # ksu_version: major * 10000 + git version + 200 for historical reasons
 $(eval KSU_VERSION=$(shell expr 10000 + $(KSU_GIT_VERSION) + 200))

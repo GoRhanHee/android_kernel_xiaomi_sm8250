@@ -22,10 +22,16 @@ if [ ! -f "$CLANG_DIR/bin/clang-14" ]; then
     popd > /dev/null
 fi
 
+YYLL1="scripts/dtc/dtc-lexer.lex.c_shipped"
+YYLL2="scripts/dtc/dtc-lexer.l"
+[ -f "$YYLL1" ] && sed -i "s/extern YYLTYPE yylloc/YYLTYPE yylloc/g;s/YYLTYPE yylloc/extern YYLTYPE yylloc/g" "$YYLL1"
+[ -f "$YYLL2" ] && sed -i "s/extern YYLTYPE yylloc/YYLTYPE yylloc/g;s/YYLTYPE yylloc/extern YYLTYPE yylloc/g" "$YYLL2"
+
 # Setting 
 export ANDROID_BUILD_TOP=$(pwd)
 export ARCH=arm64
 export SUBARCH=arm64
+export PATH=$CLANG_DIR/bin:$PATH
 export LINKER="ld.lld"
 
 MAKE_ARGS="

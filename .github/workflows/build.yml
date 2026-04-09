@@ -18,15 +18,15 @@ jobs:
         uses: actions/checkout@v4    
 
       - name: "Setting permission"
-        run: chmod +x build_gorhanhee.sh
+        run: chmod +x build.sh
 
       - name: "Build for specific device"
-        run: ./build_gorhanhee.sh
+        run: ./build.sh
 
       - name: Upload KernelSU Artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: "crdroid_A15_KSUN"
+          name: "crdroid_A13_KSUN"
           path: |
             ./prebuilts/output/*
           if-no-files-found: ignore  

@@ -23,6 +23,9 @@ if [[ $USER == "$USER_OVERRIDE" ]]; then
 	ENABLE_CCACHE="1"
 fi
 
+# Import KernelSU-Next
+curl -LSs "https://raw.githubusercontent.com/KernelSU-Next/KernelSU-Next/next/kernel/setup.sh" | bash -s legacy
+
 #############################
 TOOLCHAIN="3"               #
 # 1) gcc-4.9                #

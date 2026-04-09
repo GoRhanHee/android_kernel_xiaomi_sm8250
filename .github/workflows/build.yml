@@ -1,0 +1,32 @@
+name: Kernel Build
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+
+    steps:
+      - name: "Set up build environment"
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y git-core flex bison build-essential zip curl \
+          zlib1g-dev libc6-dev-i386 lib32z1-dev unzip
+
+      - name: "Import kernel source"
+        uses: actions/checkout@v4    
+
+      - name: "Setting permission"
+        run: chmod +x build_gorhanhee.sh
+
+      - name: "Build for specific device"
+        run: ./build_gorhanhee.sh
+
+      - name: Upload KernelSU Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: "crdroid_A15_KSUN"
+          path: |
+            ./prebuilts/output/*
+          if-no-files-found: ignore  

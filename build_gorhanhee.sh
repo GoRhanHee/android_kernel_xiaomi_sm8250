@@ -22,6 +22,12 @@ if [ ! -f "$CLANG_DIR/bin/clang-14" ]; then
     popd > /dev/null
 fi
 
+# Setting 
+export ANDROID_BUILD_TOP=$(pwd)
+export ARCH=arm64
+export SUBARCH=arm64
+export LINKER="ld.lld"
+
 MAKE_ARGS="
 LLVM=1 \
 LLVM_IAS=1 \
@@ -29,6 +35,8 @@ ARCH=arm64 \
 O=out
 "
 
+# Cooking Kernel Source
+mkdir out
 make ${MAKE_ARGS} -j24 alioth_gorhanhee_defconfig || exit 1
 make ${MAKE_ARGS} -j24 || exit 1
 
